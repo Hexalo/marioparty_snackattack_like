@@ -1,0 +1,1 @@
+# marioparty_snackattack_like
