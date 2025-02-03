@@ -1,0 +1,204 @@
+[gd_scene load_steps=21 format=3 uid="uid://iqn2gbb7kinn"]
+
+[ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/Player.tscn" id="1_gjetq"]
+[ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_phum0"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_o67kc"]
+[ext_resource type="Script" path="res://Scripts/ObjectSpawner.gd" id="7_5j8o2"]
+[ext_resource type="Script" path="res://Scripts/DeadZone.gd" id="7_aim32"]
+[ext_resource type="PackedScene" uid="uid://b1h0p2no6kcgm" path="res://Scenes/RollingMeteorite.tscn" id="8_fkuk2"]
+[ext_resource type="PackedScene" uid="uid://dj3avtdt4vnap" path="res://Scenes/ExplodingMeteorite.tscn" id="8_gye3u"]
+[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="8_qpmah"]
+[ext_resource type="Texture2D" uid="uid://cnbbny7qjh2xn" path="res://Assets/Textures/coin.png" id="9_l1uhc"]
+[ext_resource type="PackedScene" uid="uid://ctjejh7i0sacy" path="res://Scenes/FallingCoin.tscn" id="10_6a622"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjw7q"]
+size = Vector3(7.78, 1, 8.12)
+
+[sub_resource type="Environment" id="Environment_g4ka7"]
+background_mode = 1
+background_color = Color(0.764706, 0.764706, 0.764706, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
+ambient_light_energy = 1.15
+tonemap_mode = 2
+tonemap_exposure = 0.75
+ssao_enabled = true
+ssao_radius = 0.45
+ssao_intensity = 1.0
+ssao_power = 15.0
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 2.0
+fog_light_color = Color(0.647059, 0.678431, 0.72549, 1)
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_brightness = 1.06
+adjustment_contrast = 0.95
+adjustment_saturation = 1.09
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_asf4q"]
+size = Vector3(128, 17, 112)
+
+[sub_resource type="SystemFont" id="SystemFont_1ixsq"]
+font_names = PackedStringArray("Star Choco")
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_656xb"]
+font_names = PackedStringArray("Star Choco")
+
+[sub_resource type="LabelSettings" id="LabelSettings_igq7x"]
+font = SubResource("SystemFont_656xb")
+font_size = 50
+font_color = Color(0.996094, 0.691406, 0.261719, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oq4j3"]
+font = SubResource("SystemFont_656xb")
+font_size = 50
+font_color = Color(1, 0.188492, 0.25368, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0jjs"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.603719, 0.305297, 5.77569e-07, 1)
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2j2mu"]
+material = SubResource("StandardMaterial3D_a0jjs")
+
+[sub_resource type="Curve3D" id="Curve3D_jtf2s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.93657, 0, 4.98729, 0, 0, 0, 0, 0, 0, -5.07997, 0, 3.52719, 0, 0, 0, 0, 0, 0, 5.01036, 0, 3.57934, 0, 0, 0, 0, 0, 0, 4.98429, 0, 2.23657, 0, 0, 0, 0, 0, 0, -5.21034, 0, 1.98887, 0, 0, 0, 0, 0, 0, -5.3407, 0, 0.620028, 0, 0, 0, 0, 0, 0, 4.99732, 0, 0.620028, 0, 0, 0, 0, 0, 0, 5.06251, 0, -0.774888, 0, 0, 0, 0, 0, 0, -5.35374, 0, -1.00955, 0, 0, 0, 0, 0, 0, -5.44499, 0, -2.48268, 0, 0, 0, 0, 0, 0, 4.99732, 0, -2.49572, 0, 0, 0, 0, 0, 0, 4.98429, 0, -3.90367, 0, 0, 0, 0, 0, 0, -5.04086, 0, -3.95582, 0, 0, 0, 0, 0, 0, -5.09301, 0, -4.92053, 0, 0, 0, 0, 0, 0, 5.11728, 9.53674e-07, -5.19794),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 15
+
+[node name="GameplayScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_gjetq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Platforms" type="Node3D" parent="." groups=["Ground"]]
+
+[node name="PlatformRed" parent="Platforms" groups=["Ground"] instance=ExtResource("2_phum0")]
+transform = Transform3D(3.9312, 0, 0, 0, 0.39312, 0, 0, 0, 3.9312, 0.0200105, 3, 0.00302696)
+
+[node name="GroundCollider" type="StaticBody3D" parent="Platforms" groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/GroundCollider"]
+shape = SubResource("BoxShape3D_bjw7q")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_g4ka7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.898603, 0.438763, 2.98254e-08, 0.146657, 0.300359, 0.942484, 0.413527, 0.846919, -0.334251, 9.04457, 6.63937, -28.4749)
+shadow_enabled = true
+
+[node name="Extras" type="Node3D" parent="."]
+
+[node name="SpawnPosition" type="Marker3D" parent="Extras"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("6_o67kc")
+
+[node name="DeadZone" type="Area3D" parent="."]
+script = ExtResource("7_aim32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeadZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+shape = SubResource("BoxShape3D_asf4q")
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_qpmah")
+
+[node name="CoinTexture" type="TextureRect" parent="UserInterface/GameUI"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 31.0
+offset_right = 122.0
+offset_bottom = 121.0
+texture = ExtResource("9_l1uhc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CoinsLabel" type="Label" parent="UserInterface/GameUI"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 50.0
+offset_right = 193.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
+theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_1ixsq")
+theme_override_font_sizes/font_size = 48
+text = "X 3"
+label_settings = SubResource("LabelSettings_igq7x")
+
+[node name="LivesLabel" type="Label" parent="UserInterface/GameUI"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 146.0
+offset_right = 147.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
+theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_1ixsq")
+theme_override_font_sizes/font_size = 48
+text = "X 3"
+label_settings = SubResource("LabelSettings_oq4j3")
+
+[node name="ObjectSpawner" type="Node3D" parent="."]
+transform = Transform3D(0.56, 0, 0, 0, 1, 0, 0, 0, 0.63, 0, 0, 0)
+script = ExtResource("7_5j8o2")
+rolling_meteorite_scene = ExtResource("8_fkuk2")
+exploding_meteorite_scene = ExtResource("8_gye3u")
+coin_scene = ExtResource("10_6a622")
+
+[node name="SpawnPoint1" type="MeshInstance3D" parent="ObjectSpawner"]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 14, 5)
+mesh = SubResource("CylinderMesh_2j2mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
+
+[node name="SpawnPoint2" type="MeshInstance3D" parent="ObjectSpawner"]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 14, 5)
+mesh = SubResource("CylinderMesh_2j2mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
+
+[node name="SpawnPoint3" type="MeshInstance3D" parent="ObjectSpawner"]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 14, -5)
+mesh = SubResource("CylinderMesh_2j2mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
+
+[node name="SpawnPoint4" type="MeshInstance3D" parent="ObjectSpawner"]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 14, -5)
+mesh = SubResource("CylinderMesh_2j2mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
+
+[node name="SpawnPath" type="Path3D" parent="ObjectSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+curve = SubResource("Curve3D_jtf2s")
+
+[node name="SpawnPoint" type="PathFollow3D" parent="ObjectSpawner/SpawnPath"]
+transform = Transform3D(0.995212, 0, 0.097742, 0, 1, 0, -0.097742, 0, 0.995212, -4.93657, 0, 4.98729)
+
+[node name="ObjectTimer" type="Timer" parent="ObjectSpawner"]
+wait_time = 1.5
+autostart = true
+
+[connection signal="body_entered" from="DeadZone" to="DeadZone" method="_on_body_entered"]
+[connection signal="timeout" from="ObjectSpawner/ObjectTimer" to="ObjectSpawner" method="_on_object_timer_timeout"]

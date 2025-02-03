@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj3avtdt4vnap"]
+
+[ext_resource type="Script" path="res://Scripts/ExplodingMeteorite.gd" id="1_q75li"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjdya"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q7qcp"]
+material = SubResource("StandardMaterial3D_vjdya")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
+
+[node name="ExplodingMeteorite" type="RigidBody3D" groups=["Enemies"]]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_q75li")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_q7qcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ev05g")
+
+[node name="SpotShadow3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 6.244
+light_negative = true
+spot_range = 17.039
+spot_angle = 10.5
+spot_angle_attenuation = 0.0507661
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
