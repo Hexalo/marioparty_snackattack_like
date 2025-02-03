@@ -25,4 +25,5 @@ func _on_body_entered(body: Node) -> void:
 func _on_coin_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		GameManager.add_score()
+		GameManager.calculate_wait_time()
 		queue_free()

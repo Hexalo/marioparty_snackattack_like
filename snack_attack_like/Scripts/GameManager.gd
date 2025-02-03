@@ -2,7 +2,7 @@ extends Node3D
 
 # ---------- VARIABLES ---------- #
 
-var const_wait_time = 1.5
+var const_wait_time = 2
 
 var score
 var life
@@ -15,8 +15,9 @@ func _ready() -> void:
 
 func _process(_delta):
 	show_mouse_cursor()
-	game_over()
-	calculate_wait_time()
+	
+	if life <= 0:
+		game_over()
 	
 func set_game_var():
 	score = 0
@@ -29,14 +30,14 @@ func show_mouse_cursor():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func game_over():
-	if life <= 0 :
-		set_game_var()
-		get_tree().reload_current_scene()
+	set_game_var()
+	get_tree().reload_current_scene()
 		
 func calculate_wait_time():
 	if wait_time >= 0.5 :
-		wait_time = const_wait_time - score * 0.05 # TODO logarithmic difficulty scale
-
+		wait_time = const_wait_time - ((log(score + 1) / log(12)) + 
+										sin(score - 1.4)/(-9))  
+										
 func add_score():
 	score += 1
 	

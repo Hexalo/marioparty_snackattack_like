@@ -34,7 +34,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 2
 
 # ---------- FUNCTIONS ---------- #
 
-func _process(delta):
+func _physics_process(delta):
 	player_animations()
 	get_input(delta)
 	
@@ -53,12 +53,12 @@ func _process(delta):
 	if is_grounded:
 		can_double_jump = true
 	
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			perform_jump()
-		elif can_double_jump:
-			if is_moving():
-				perform_flip_jump()
+	#if Input.is_action_just_pressed("jump"):
+		#if is_on_floor():
+			#perform_jump()
+		#elif can_double_jump:
+			#if is_moving():
+				#perform_flip_jump()
 	
 	velocity.y -= gravity * delta
 

@@ -10,6 +10,9 @@ material = SubResource("StandardMaterial3D_vjdya")
 [sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
 
 [node name="ExplodingMeteorite" type="RigidBody3D" groups=["Enemies"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_q75li")

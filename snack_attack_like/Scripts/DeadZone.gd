@@ -8,6 +8,8 @@ extends Area3D
 # ---------- SIGNALS ---------- #
 
 func _on_body_entered(body):
-	# Checks if player is colliding with the dead zone & reset player position if true
 	if body.is_in_group("Player"):
-		player.global_position = spawn_position.global_position
+		GameManager.game_over()
+	
+	if body.is_in_group("Enemies"):
+		body.queue_free()
