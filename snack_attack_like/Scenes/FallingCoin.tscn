@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://ctjejh7i0sacy"]
+[gd_scene load_steps=18 format=4 uid="uid://ctjejh7i0sacy"]
 
 [ext_resource type="Script" path="res://Scripts/FallingCoin.gd" id="1_dqpor"]
 [ext_resource type="Script" path="res://Scripts/Coin.gd" id="2_wf4ss"]
 [ext_resource type="Texture2D" uid="uid://clhres80vdm85" path="res://Assets/Textures/colormap.png" id="3_3b53e"]
+[ext_resource type="PackedScene" uid="uid://bi4erbwch61wc" path="res://Scenes/coinParticle.tscn" id="3_k4v6v"]
 [ext_resource type="Texture2D" uid="uid://drk46pes52whg" path="res://Assets/Textures/particle.png" id="4_of5ko"]
+[ext_resource type="PackedScene" uid="uid://qdo27ilvkhpw" path="res://Assets/Models/screw.blend" id="5_4qdus"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
 
@@ -75,13 +77,15 @@ colors = PackedColorArray(0.996078, 0.909804, 0.352941, 1, 1, 1, 1, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_in6kc"]
 radius = 1.139
 
-[node name="FallingCoin" type="RigidBody3D"]
+[node name="FallingCoin" type="RigidBody3D" groups=["Item"]]
+transform = Transform3D(0.966775, 0, 0, 0, 0.966775, 0, 0, 0, 0.966775, 0, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_dqpor")
+exploding_particle = ExtResource("3_k4v6v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ev05g")
@@ -93,10 +97,14 @@ follow_speed = 15
 
 [node name="CoinModel" type="MeshInstance3D" parent="Coin"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_khdiv")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_f1dcy")
 skeleton = NodePath("")
+
+[node name="screw" parent="Coin" instance=ExtResource("5_4qdus")]
+transform = Transform3D(-2.01646e-08, 0.461313, 0, -0.461313, -2.01646e-08, 0, 0, 0, 0.461313, 0, 0.484544, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -120,6 +128,13 @@ color_ramp = SubResource("Gradient_db7aj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Coin/Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124512, -0.0106812, -0.0125122)
 shape = SubResource("SphereShape3D_in6kc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Coin"]
+transform = Transform3D(1.03437, 0, 0, 0, 1.03437, 0, 0, 0, 1.03437, 0.273239, 1.40395, 0)
+light_color = Color(0.888789, 0.743541, 0, 1)
+light_energy = 9.659
+omni_range = 1.533
+omni_attenuation = 1.03
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]

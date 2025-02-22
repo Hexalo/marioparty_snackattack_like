@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://3xs43jclpqns"]
+
+[ext_resource type="Script" path="res://Scripts/exploding_particle.gd" id="1_54vof"]
+
+[sub_resource type="Gradient" id="Gradient_qb5py"]
+offsets = PackedFloat32Array(0.469003, 1)
+colors = PackedColorArray(0.445838, 0.74583, 1, 1, 5.58317e-06, 0.649387, 0.851085, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aqp54"]
+gradient = SubResource("Gradient_qb5py")
+fill = 1
+fill_from = Vector2(0.517094, 0.489316)
+fill_to = Vector2(0.931624, 0.873932)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu11j"]
+transparency = 1
+blend_mode = 1
+albedo_texture = SubResource("GradientTexture2D_aqp54")
+emission_enabled = true
+emission = Color(1.54018e-06, 0.557732, 0.709434, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 11.419
+
+[sub_resource type="QuadMesh" id="QuadMesh_x415k"]
+material = SubResource("StandardMaterial3D_fu11j")
+
+[sub_resource type="Curve" id="Curve_70cx8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.451098, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ExplodingParticle" type="Node3D"]
+script = ExtResource("1_54vof")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525762, 0)
+emitting = false
+amount = 100
+lifetime = 0.72
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_x415k")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, -7.69, 0)
+initial_velocity_max = 6.65
+angular_velocity_max = 235.53
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_70cx8")

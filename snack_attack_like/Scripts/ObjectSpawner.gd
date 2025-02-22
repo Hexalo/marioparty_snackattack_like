@@ -29,7 +29,7 @@ func _on_object_timer_timeout() -> void:
 	spawned_object.position.y = 14
 	
 	spawn_clock.wait_time = GameManager.wait_time
-	print("wait time : " + str(GameManager.wait_time))
+	#print("wait time : " + str(GameManager.wait_time))
 		
 func get_random_object_to_spawn():
 	var rand_int = randi_range(0, 2)

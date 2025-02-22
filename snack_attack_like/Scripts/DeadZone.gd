@@ -11,5 +11,5 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		GameManager.game_over()
 	
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") or body.is_in_group("Item"):
 		body.queue_free()

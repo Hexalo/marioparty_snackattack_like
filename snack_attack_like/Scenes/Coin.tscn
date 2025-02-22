@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://bk5n0tn4k1l0c"]
+[gd_scene load_steps=15 format=4 uid="uid://bk5n0tn4k1l0c"]
 
 [ext_resource type="Script" path="res://Scripts/Coin.gd" id="1_b8wip"]
 [ext_resource type="Texture2D" uid="uid://clhres80vdm85" path="res://Assets/Textures/colormap.png" id="2_u2ql5"]
 [ext_resource type="Texture2D" uid="uid://drk46pes52whg" path="res://Assets/Textures/particle.png" id="3_sjsc2"]
+[ext_resource type="PackedScene" uid="uid://qdo27ilvkhpw" path="res://Assets/Models/screw.blend" id="4_cm3tp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khdiv"]
 albedo_texture = ExtResource("2_u2ql5")
@@ -77,6 +78,7 @@ script = ExtResource("1_b8wip")
 
 [node name="CoinModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_khdiv")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_f1dcy")
@@ -103,6 +105,9 @@ color_ramp = SubResource("Gradient_db7aj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
 shape = SubResource("SphereShape3D_an4m6")
+
+[node name="screw" parent="." instance=ExtResource("4_cm3tp")]
+transform = Transform3D(-1.5428e-08, 0.352951, -1.5428e-08, 0, -1.5428e-08, -0.352951, -0.352951, -1.5428e-08, 6.74378e-16, 0, 0.411335, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]

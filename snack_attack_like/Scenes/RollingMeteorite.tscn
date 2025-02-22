@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1h0p2no6kcgm"]
+[gd_scene load_steps=9 format=3 uid="uid://b1h0p2no6kcgm"]
 
 [ext_resource type="Script" path="res://Scripts/RollingMeteorite.gd" id="1_xntb1"]
+[ext_resource type="PackedScene" uid="uid://do86kmyfaj7tu" path="res://Assets/Models/enemies/enemy_1.blend" id="2_iaoim"]
+[ext_resource type="PackedScene" uid="uid://b46kb57a485ri" path="res://Scenes/explodingParticle.tscn" id="2_mnf23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iwgr"]
 albedo_color = Color(0.480995, 0.508865, 0.863892, 1)
@@ -10,27 +12,40 @@ material = SubResource("StandardMaterial3D_1iwgr")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
 
-[node name="ExplodingMeteorite" type="RigidBody3D" groups=["Enemies"]]
+[sub_resource type="Gradient" id="Gradient_mt8gx"]
+offsets = PackedFloat32Array(0.725995, 0.779859)
+colors = PackedColorArray(0.00784314, 0.00784314, 0.00784314, 1, 0.0313726, 0.0313726, 0.0313726, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3dbe"]
+gradient = SubResource("Gradient_mt8gx")
+fill = 1
+fill_from = Vector2(0.489316, 0.491453)
+fill_to = Vector2(0.931624, 0.0662393)
+
+[node name="RollingMeteorite" type="RigidBody3D" groups=["Enemies"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_xntb1")
+explosion_particle = ExtResource("2_mnf23")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 cast_shadow = 0
 mesh = SubResource("SphereMesh_q7qcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ev05g")
 
-[node name="SpotShadow3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-light_energy = 6.244
-light_negative = true
-spot_range = 17.039
-spot_angle = 10.5
-spot_angle_attenuation = 0.267945
+[node name="enemy_1" parent="." instance=ExtResource("2_iaoim")]
+transform = Transform3D(-2.39328e-08, 0, 0.547519, 0, 0.547519, 0, -0.547519, 0, -2.39328e-08, 0, -0.497222, 0)
+
+[node name="Shadow" type="Decal" parent="."]
+transform = Transform3D(0.729345, 0, 0, 0, 4.16762, 0, 0, 0, 0.783776, 0, -3.96662, 0)
+texture_albedo = SubResource("GradientTexture2D_f3dbe")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="enemy_1"]

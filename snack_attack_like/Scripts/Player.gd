@@ -24,6 +24,8 @@ var can_double_jump = false
 # Onready Variables
 @onready var model = $gobot
 @onready var animation = $gobot/AnimationPlayer
+@onready var my_animation = $gobot/player_model/AnimationPlayer
+@onready var shake_animation = $Gimbal/AnimationPlayer
 @onready var spring_arm = %Gimbal
 
 @onready var particle_trail = $ParticleTrail
@@ -106,8 +108,17 @@ func player_animations():
 	
 	if is_on_floor():
 		if is_moving(): # Checks if player is moving
-			animation.play("Run", 0.5)
+			#animation.play("Run", 0.5)
+			my_animation.play("Run")
 			particle_trail.emitting = true
 			footsteps.stream_paused = false
 		else:
-			animation.play("Idle", 0.5)
+			#animation.play("Idle", 0.5)
+			my_animation.play("Idle")
+			
+	else :
+			my_animation.play("Fall")
+				
+func play_shake_animation():
+	shake_animation.play("camera_shake_animation")
+	

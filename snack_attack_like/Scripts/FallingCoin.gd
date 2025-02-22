@@ -1,7 +1,11 @@
 extends RigidBody3D
 
 @onready var spotshadow3d = $SpotShadow3D
+@onready var coin = $Coin
+@onready var _current_scene = get_tree().current_scene
+
 @export	var max_bounce = 3
+@export var exploding_particle : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,4 +30,8 @@ func _on_coin_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		GameManager.add_score()
 		GameManager.calculate_wait_time()
+		Utils.emit_particle(exploding_particle, 
+							coin.get_global_position(), 
+							_current_scene)
+							
 		queue_free()
