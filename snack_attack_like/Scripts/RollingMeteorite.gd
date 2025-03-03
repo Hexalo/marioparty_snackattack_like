@@ -22,8 +22,8 @@ func _on_body_entered(body: Node) -> void:
 		queue_free()
 	
 	if body.is_in_group("Ground") :
-		var x_force = randi_range(-7,7);
-		var z_force = randi_range(-7,7);
+		var x_force = randi_range(-4,4);
+		var z_force = randi_range(-4,4);
 		
 		apply_impulse(Vector3(x_force,3,z_force))
 		max_bounce -= 1

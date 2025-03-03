@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_1iwgr")
 [sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
 
 [sub_resource type="Gradient" id="Gradient_mt8gx"]
-offsets = PackedFloat32Array(0.725995, 0.779859)
+offsets = PackedFloat32Array(0.777518, 0.779859)
 colors = PackedColorArray(0.00784314, 0.00784314, 0.00784314, 1, 0.0313726, 0.0313726, 0.0313726, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f3dbe"]
@@ -43,7 +43,7 @@ shape = SubResource("SphereShape3D_ev05g")
 transform = Transform3D(-2.39328e-08, 0, 0.547519, 0, 0.547519, 0, -0.547519, 0, -2.39328e-08, 0, -0.497222, 0)
 
 [node name="Shadow" type="Decal" parent="."]
-transform = Transform3D(0.729345, 0, 0, 0, 4.16762, 0, 0, 0, 0.783776, 0, -3.96662, 0)
+transform = Transform3D(0.729345, 0, 0, 0, 4.16762, 0, 0, 0, 0.783776, 0, -4.37864, 0)
 texture_albedo = SubResource("GradientTexture2D_f3dbe")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

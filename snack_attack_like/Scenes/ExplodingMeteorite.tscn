@@ -42,7 +42,7 @@ shape = SubResource("SphereShape3D_ev05g")
 transform = Transform3D(-2.49155e-08, 0, 0.57, 0, 0.57, 0, -0.57, 0, -2.49155e-08, 0, -0.494095, 0)
 
 [node name="Shadow" type="Decal" parent="."]
-transform = Transform3D(0.887293, 0, 0, 0, 4.16762, 0, 0, 0, 0.953511, 0, -4.3936, 0)
+transform = Transform3D(0.887293, 0, 0, 0, 4.16762, 0, 0, 0, 0.953511, 0, -4.64746, 0)
 texture_albedo = SubResource("GradientTexture2D_sa7x2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

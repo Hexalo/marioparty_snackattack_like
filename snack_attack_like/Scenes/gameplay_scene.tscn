@@ -1,4 +1,4 @@
-[gd_scene load_steps=279 format=4 uid="uid://iqn2gbb7kinn"]
+[gd_scene load_steps=283 format=4 uid="uid://iqn2gbb7kinn"]
 
 [ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/Player.tscn" id="1_gjetq"]
 [ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_phum0"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjejh7i0sacy" path="res://Scenes/FallingCoin.tscn" id="10_6a622"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bjw7q"]
+margin = 0.0
 size = Vector3(7.78, 1, 8.12)
 
 [sub_resource type="Curve" id="Curve_mftur"]
@@ -81,20 +82,37 @@ adjustment_contrast = 1.13
 adjustment_saturation = 1.12
 adjustment_color_correction = SubResource("CurveTexture_fu085")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lwl0m"]
+frequency = 0.0278
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nllbp"]
+noise = SubResource("FastNoiseLite_lwl0m")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v212"]
 resource_name = "Material.001"
 cull_mode = 2
 albedo_color = Color(1, 0.848965, 0, 1)
 metallic = 0.473913
 roughness = 0.291304
+normal_enabled = true
+normal_scale = -0.05
+normal_texture = SubResource("NoiseTexture2D_nllbp")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwypv"]
 resource_name = "Material.002"
 transparency = 4
 cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 0.478261)
-metallic = 1.0
-roughness = 0.13913
+albedo_color = Color(0.905882, 0.905882, 0.905882, 0.6)
+metallic = 0.62
+roughness = 0.12
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tuojl"]
+noise_type = 3
+frequency = 0.0356
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hojli"]
+noise = SubResource("FastNoiseLite_tuojl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4hdm"]
 resource_name = "Material.003"
@@ -102,6 +120,12 @@ cull_mode = 2
 albedo_color = Color(0.727836, 0.727836, 0.727836, 1)
 metallic = 0.886957
 roughness = 0.352174
+normal_enabled = true
+normal_scale = 0.05
+normal_texture = SubResource("NoiseTexture2D_hojli")
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kef8k"]
 resource_name = "Material.005"
@@ -4537,10 +4561,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2735, 0)
 
 [node name="Platforms" type="Node3D" parent="." groups=["Ground"]]
 transform = Transform3D(0.761983, 0, 0, 0, 0.672709, 0, 0, 0, 0.765092, 0.00010705, -0.437162, 0.00393326)
-visible = false
 
 [node name="PlatformRed" parent="Platforms" groups=["Ground"] instance=ExtResource("2_phum0")]
 transform = Transform3D(3.9312, 0, 0, 0, 0.39312, 0, 0, 0, 3.9312, 0.0200105, 3, 0.00302696)
+visible = false
 
 [node name="GroundCollider" type="StaticBody3D" parent="Platforms" groups=["Ground"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -4560,6 +4584,7 @@ light_energy = 3.075
 light_indirect_energy = 5.513
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
+shadow_enabled = true
 spot_range = 17.335
 spot_attenuation = 0.5
 spot_angle = 82.79
@@ -4572,6 +4597,7 @@ light_energy = 3.075
 light_indirect_energy = 5.513
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
+shadow_enabled = true
 spot_range = 17.335
 spot_attenuation = 0.5
 spot_angle = 82.79
@@ -5298,27 +5324,27 @@ exploding_meteorite_scene = ExtResource("8_gye3u")
 coin_scene = ExtResource("10_6a622")
 
 [node name="SpawnPoint1" type="MeshInstance3D" parent="ObjectSpawner"]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 14, 5)
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 18.4818, 5)
 mesh = SubResource("CylinderMesh_2j2mu")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
 
 [node name="SpawnPoint2" type="MeshInstance3D" parent="ObjectSpawner"]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 14, 5)
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 18.4818, 5)
 mesh = SubResource("CylinderMesh_2j2mu")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
 
 [node name="SpawnPoint3" type="MeshInstance3D" parent="ObjectSpawner"]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 14, -5)
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5, 18.4818, -5)
 mesh = SubResource("CylinderMesh_2j2mu")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
 
 [node name="SpawnPoint4" type="MeshInstance3D" parent="ObjectSpawner"]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 14, -5)
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -5, 18.4818, -5)
 mesh = SubResource("CylinderMesh_2j2mu")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0jjs")
 
 [node name="SpawnPath" type="Path3D" parent="ObjectSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4818, 0)
 curve = SubResource("Curve3D_jtf2s")
 
 [node name="SpawnPoint" type="PathFollow3D" parent="ObjectSpawner/SpawnPath"]
@@ -5329,11 +5355,14 @@ wait_time = 1.5
 autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.643401, 0, -0.317053, 0, 0.717278, 0, 0.317053, 0, 0.643401, 6.02233, 2.2151, -2.91311)
+transform = Transform3D(0.572759, 0, -0.287867, 0, 0.641031, 0, 0.287867, 0, 0.572759, 6.00841, 2.39094, -2.92699)
 texture = SubResource("ViewportTexture_x3sa7")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true
+scaling_3d_mode = 1
+scaling_3d_scale = 0.3
+fsr_sharpness = 2.0
 
 [node name="UserInterface" type="CanvasLayer" parent="Sprite3D/SubViewport"]
 
