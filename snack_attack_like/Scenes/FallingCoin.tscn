@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://ctjejh7i0sacy"]
 
-[ext_resource type="Script" path="res://Scripts/FallingCoin.gd" id="1_dqpor"]
-[ext_resource type="Script" path="res://Scripts/Coin.gd" id="2_wf4ss"]
+[ext_resource type="Script" uid="uid://mexdtd5xi5i2" path="res://Scripts/FallingCoin.gd" id="1_dqpor"]
+[ext_resource type="Script" uid="uid://ccomv7c4drm7p" path="res://Scripts/Coin.gd" id="2_wf4ss"]
 [ext_resource type="Texture2D" uid="uid://clhres80vdm85" path="res://Assets/Textures/colormap.png" id="3_3b53e"]
 [ext_resource type="PackedScene" uid="uid://bi4erbwch61wc" path="res://Scenes/coinParticle.tscn" id="3_k4v6v"]
 [ext_resource type="Texture2D" uid="uid://drk46pes52whg" path="res://Assets/Textures/particle.png" id="4_of5ko"]

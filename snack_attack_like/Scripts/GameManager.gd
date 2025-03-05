@@ -3,10 +3,13 @@ extends Node3D
 # ---------- VARIABLES ---------- #
 
 @onready var damage_particle = preload("res://Scenes/damageParticle.tscn")
+@onready var celebration_particle = preload("res://Scenes/celebrationParticle.tscn")
+
 var _current_scene
 var player
 
 var const_wait_time = 2
+var reached_highscore = false
 
 var score
 var life
@@ -27,6 +30,7 @@ func set_game_var():
 	score = 0
 	life = 3 
 	wait_time = const_wait_time	
+	reached_highscore = false
 	
 # Making Cursor visible using "mouse_visible" key which is assigned in Project Settings > Input Map
 func show_mouse_cursor():
@@ -34,6 +38,9 @@ func show_mouse_cursor():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func game_over():
+	if (score > GameSaver.get_highscore()) :
+		GameSaver.set_highscore(score)
+		
 	get_tree().reload_current_scene()
 	set_game_var()
 		
@@ -45,6 +52,13 @@ func calculate_wait_time():
 func add_score():
 	score += 1
 	
+	if (score > GameSaver.get_highscore() 
+						and GameSaver.highscore > 0 and not reached_highscore) :
+		_current_scene = get_tree().current_scene
+		Utils.emit_particle(celebration_particle, 
+							Vector3(0, 2, 0), _current_scene)
+		reached_highscore = true
+			
 func dec_life():
 	_current_scene = get_tree().current_scene
 	player = _current_scene.get_node("Player")

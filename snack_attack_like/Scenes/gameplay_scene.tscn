@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/Player.tscn" id="1_gjetq"]
 [ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_phum0"]
 [ext_resource type="Texture2D" uid="uid://djg0s5eittoip" path="res://Assets/Textures/metro_noord_4k.exr" id="3_jii0m"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_o67kc"]
-[ext_resource type="Script" path="res://Scripts/ObjectSpawner.gd" id="7_5j8o2"]
-[ext_resource type="Script" path="res://Scripts/DeadZone.gd" id="7_aim32"]
+[ext_resource type="Script" uid="uid://bkmcokyrxnk7b" path="res://Scripts/GameManager.gd" id="6_o67kc"]
+[ext_resource type="Script" uid="uid://b2xd7oedl7x68" path="res://Scripts/ObjectSpawner.gd" id="7_5j8o2"]
+[ext_resource type="Script" uid="uid://qm5jujd3qe5o" path="res://Scripts/DeadZone.gd" id="7_aim32"]
 [ext_resource type="PackedScene" uid="uid://b1h0p2no6kcgm" path="res://Scenes/RollingMeteorite.tscn" id="8_fkuk2"]
 [ext_resource type="PackedScene" uid="uid://dj3avtdt4vnap" path="res://Scenes/ExplodingMeteorite.tscn" id="8_gye3u"]
-[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="8_qpmah"]
+[ext_resource type="Script" uid="uid://cqmuto8tdeekl" path="res://Scripts/GameUI.gd" id="8_qpmah"]
 [ext_resource type="Texture2D" uid="uid://cnbbny7qjh2xn" path="res://Assets/Textures/coin.png" id="9_l1uhc"]
 [ext_resource type="PackedScene" uid="uid://ctjejh7i0sacy" path="res://Scenes/FallingCoin.tscn" id="10_6a622"]
 
@@ -4485,7 +4485,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.466667, 1, 0, 0.994522, 0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skim"]
 _data = {
-"SpiralAction": SubResource("Animation_jm4s2")
+&"SpiralAction": SubResource("Animation_jm4s2")
 }
 
 [sub_resource type="Gradient" id="Gradient_0kjfx"]
@@ -5278,7 +5278,7 @@ skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Environment/playground"]
 libraries = {
-"": SubResource("AnimationLibrary_3skim")
+&"": SubResource("AnimationLibrary_3skim")
 }
 autoplay = "SpiralAction"
 
@@ -5317,7 +5317,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 shape = SubResource("BoxShape3D_asf4q")
 
 [node name="ObjectSpawner" type="Node3D" parent="."]
-transform = Transform3D(0.53321, 0, 0, 0, 1, 0, 0, 0, 0.602309, 2.62331e-06, 0, 8.83827e-05)
+transform = Transform3D(0.433432, 0, 0, 0, 1, 0, 0, 0, 0.433644, 2.62331e-06, 0, 8.83827e-05)
 script = ExtResource("7_5j8o2")
 rolling_meteorite_scene = ExtResource("8_fkuk2")
 exploding_meteorite_scene = ExtResource("8_gye3u")
@@ -5362,7 +5362,6 @@ texture = SubResource("ViewportTexture_x3sa7")
 transparent_bg = true
 scaling_3d_mode = 1
 scaling_3d_scale = 0.3
-fsr_sharpness = 2.0
 
 [node name="UserInterface" type="CanvasLayer" parent="Sprite3D/SubViewport"]
 

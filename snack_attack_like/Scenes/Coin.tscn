@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://bk5n0tn4k1l0c"]
 
-[ext_resource type="Script" path="res://Scripts/Coin.gd" id="1_b8wip"]
+[ext_resource type="Script" uid="uid://ccomv7c4drm7p" path="res://Scripts/Coin.gd" id="1_b8wip"]
 [ext_resource type="Texture2D" uid="uid://clhres80vdm85" path="res://Assets/Textures/colormap.png" id="2_u2ql5"]
 [ext_resource type="Texture2D" uid="uid://drk46pes52whg" path="res://Assets/Textures/particle.png" id="3_sjsc2"]
 [ext_resource type="PackedScene" uid="uid://qdo27ilvkhpw" path="res://Assets/Models/screw.blend" id="4_cm3tp"]

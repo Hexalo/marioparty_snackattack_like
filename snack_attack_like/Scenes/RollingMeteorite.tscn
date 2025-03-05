@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b1h0p2no6kcgm"]
 
-[ext_resource type="Script" path="res://Scripts/RollingMeteorite.gd" id="1_xntb1"]
+[ext_resource type="Script" uid="uid://ckovi18xeumtq" path="res://Scripts/RollingMeteorite.gd" id="1_xntb1"]
 [ext_resource type="PackedScene" uid="uid://do86kmyfaj7tu" path="res://Assets/Models/enemies/enemy_1.blend" id="2_iaoim"]
 [ext_resource type="PackedScene" uid="uid://b46kb57a485ri" path="res://Scenes/explodingParticle.tscn" id="2_mnf23"]
 
@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_1iwgr")
 [sub_resource type="SphereShape3D" id="SphereShape3D_ev05g"]
 
 [sub_resource type="Gradient" id="Gradient_mt8gx"]
-offsets = PackedFloat32Array(0.777518, 0.779859)
+offsets = PackedFloat32Array(0.744131, 0.819249)
 colors = PackedColorArray(0.00784314, 0.00784314, 0.00784314, 1, 0.0313726, 0.0313726, 0.0313726, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f3dbe"]

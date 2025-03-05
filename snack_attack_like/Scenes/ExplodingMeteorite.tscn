@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj3avtdt4vnap"]
 
-[ext_resource type="Script" path="res://Scripts/ExplodingMeteorite.gd" id="1_q75li"]
+[ext_resource type="Script" uid="uid://5vpbhvrpbxvx" path="res://Scripts/ExplodingMeteorite.gd" id="1_q75li"]
 [ext_resource type="PackedScene" uid="uid://b46kb57a485ri" path="res://Scenes/explodingParticle.tscn" id="2_mj8b0"]
 [ext_resource type="PackedScene" uid="uid://c81v4x0eai5as" path="res://Assets/Models/enemies/enemy_2.blend" id="2_rp1b4"]
 

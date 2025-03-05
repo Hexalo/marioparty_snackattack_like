@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://3xs43jclpqns"]
 
-[ext_resource type="Script" path="res://Scripts/exploding_particle.gd" id="1_54vof"]
+[ext_resource type="Script" uid="uid://drpmcsejt7dfn" path="res://Scripts/exploding_particle.gd" id="1_54vof"]
 
 [sub_resource type="Gradient" id="Gradient_qb5py"]
 offsets = PackedFloat32Array(0.469003, 1)
