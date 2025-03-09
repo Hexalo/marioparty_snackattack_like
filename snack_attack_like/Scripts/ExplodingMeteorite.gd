@@ -15,8 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if max_bounce <= 0 :	
-		Utils.emit_particle(exploding_particle, 
-							global_position, _current_scene)
+		play_effects()
 		queue_free()
 	
 	if body.is_in_group("Ground") :
@@ -24,7 +23,10 @@ func _on_body_entered(body: Node) -> void:
 		max_bounce -= 1
 		
 	if body.is_in_group("Player") :
-		Utils.emit_particle(exploding_particle, 
-							global_position, _current_scene)
+		play_effects()
 		GameManager.dec_life()
 		queue_free()
+
+func play_effects():
+	Utils.emit_particle(exploding_particle, 
+					global_position, _current_scene)

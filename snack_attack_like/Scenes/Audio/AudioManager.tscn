@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm1hqybgiajgu"]
+[gd_scene load_steps=11 format=3 uid="uid://bm1hqybgiajgu"]
 
 [ext_resource type="Script" uid="uid://c31t8bbe8fnyc" path="res://Scripts/AudioManager.gd" id="1_iwfhn"]
 [ext_resource type="AudioStream" uid="uid://lnq3qyt6mylm" path="res://Assets/Audio/SFX/jump.ogg" id="1_rkf2p"]
-[ext_resource type="AudioStream" uid="uid://bw1p5rf0tudfx" path="res://Assets/Audio/SFX/coin.ogg" id="3_j83j2"]
+[ext_resource type="AudioStream" uid="uid://bmv6nl5j6u7uo" path="res://Assets/Audio/Coins_Bottlecaps_Drop.wav" id="3_r1463"]
+[ext_resource type="AudioStream" uid="uid://c10y85m7vlmjp" path="res://Assets/Audio/Retro Event Acute 11.wav" id="4_kcgc6"]
+[ext_resource type="AudioStream" uid="uid://cfebom11ufgm3" path="res://Assets/Audio/EXPLDsgn_Explosion Impact_14.wav" id="5_kcgc6"]
+[ext_resource type="AudioStream" uid="uid://bswkmw8kvwrky" path="res://Assets/Audio/JDSherbert - Ultimate UI SFX Pack - Popup Open - 1.wav" id="5_paayw"]
+[ext_resource type="AudioStream" uid="uid://s7b8mi8lnoaf" path="res://Assets/Audio/Retro Electric Short 03.wav" id="7_4rpru"]
+[ext_resource type="AudioStream" uid="uid://cfvc41ngo333c" path="res://Assets/Audio/Retro Event Acute 08.wav" id="8_b5goh"]
+[ext_resource type="AudioStream" uid="uid://du2wau8hyqcmu" path="res://Assets/Audio/Retro Event Wrong Echo 03.wav" id="9_2jrjh"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u4etc"]
 
@@ -13,11 +19,40 @@ script = ExtResource("1_iwfhn")
 stream = ExtResource("1_rkf2p")
 volume_db = -5.0
 pitch_scale = 1.12
+bus = &"Sfx"
 
 [node name="CoinSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_j83j2")
-volume_db = -5.0
-pitch_scale = 1.2
+stream = ExtResource("3_r1463")
+volume_db = -7.858
+bus = &"Sfx"
+
+[node name="CoinSfx2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kcgc6")
+bus = &"Sfx"
 
 [node name="Musics" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_u4etc")
+bus = &"Musics"
+
+[node name="Spring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_paayw")
+bus = &"Sfx"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kcgc6")
+bus = &"Sfx"
+
+[node name="RobotDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4rpru")
+volume_db = -11.409
+bus = &"Sfx"
+
+[node name="Celebration" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_b5goh")
+volume_db = 7.021
+bus = &"Sfx"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_2jrjh")
+volume_db = 6.582
+bus = &"Sfx"

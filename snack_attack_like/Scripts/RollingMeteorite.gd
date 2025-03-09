@@ -28,7 +28,8 @@ func _on_body_entered(body: Node) -> void:
 		apply_impulse(Vector3(x_force,3,z_force))
 		max_bounce -= 1
 		
-		animation_player.play("Jump");
+		animation_player.play("Jump")
+		AudioManager.play_spring()
 		
 	if body.is_in_group("Player") :
 		GameManager.dec_life()

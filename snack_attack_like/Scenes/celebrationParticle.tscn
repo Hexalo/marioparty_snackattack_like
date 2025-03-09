@@ -40,6 +40,7 @@ colors = PackedColorArray(1, 0.461595, 0.649102, 1, 0, 0.750841, 0.573536, 1, 0.
 
 [node name="celebrationParticle" type="Node3D"]
 script = ExtResource("1_vol53")
+is_celebration = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.585793, 0)

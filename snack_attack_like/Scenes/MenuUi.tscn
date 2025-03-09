@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b114b6wtf3320"]
+
+[ext_resource type="Texture2D" uid="uid://mk4hd1chb5ib" path="res://Assets/Resources/IMG_4495.PNG" id="1_f1v4l"]
+[ext_resource type="Texture2D" uid="uid://l60a31pbqhcs" path="res://Assets/Resources/play_btn_normal.png" id="2_uc07g"]
+[ext_resource type="Texture2D" uid="uid://bei5trxl543ja" path="res://Assets/Resources/play_btn_pressed.png" id="3_xtm07"]
+
+[node name="MenuUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f1v4l")
+stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -531.0
+offset_top = -433.0
+offset_right = 531.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.62, 0.62)
+pivot_offset = Vector2(531, 0)
+texture_normal = ExtResource("2_uc07g")
+texture_pressed = ExtResource("3_xtm07")
+texture_hover = ExtResource("2_uc07g")
+stretch_mode = 5

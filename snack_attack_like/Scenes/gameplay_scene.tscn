@@ -1,8 +1,9 @@
-[gd_scene load_steps=283 format=4 uid="uid://iqn2gbb7kinn"]
+[gd_scene load_steps=284 format=4 uid="uid://iqn2gbb7kinn"]
 
 [ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/Player.tscn" id="1_gjetq"]
 [ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_phum0"]
 [ext_resource type="Texture2D" uid="uid://djg0s5eittoip" path="res://Assets/Textures/metro_noord_4k.exr" id="3_jii0m"]
+[ext_resource type="Script" uid="uid://djcc150q1u2cv" path="res://Scenes/HueEngine.gd" id="3_krv6g"]
 [ext_resource type="Script" uid="uid://bkmcokyrxnk7b" path="res://Scripts/GameManager.gd" id="6_o67kc"]
 [ext_resource type="Script" uid="uid://b2xd7oedl7x68" path="res://Scripts/ObjectSpawner.gd" id="7_5j8o2"]
 [ext_resource type="Script" uid="uid://qm5jujd3qe5o" path="res://Scripts/DeadZone.gd" id="7_aim32"]
@@ -77,9 +78,9 @@ fog_height = 1.5
 fog_height_density = 0.3955
 volumetric_fog_temporal_reprojection_enabled = false
 adjustment_enabled = true
-adjustment_brightness = 0.97
+adjustment_brightness = 0.85
 adjustment_contrast = 1.13
-adjustment_saturation = 1.12
+adjustment_saturation = 1.39
 adjustment_color_correction = SubResource("CurveTexture_fu085")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lwl0m"]
@@ -4573,6 +4574,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_bjw7q")
 
 [node name="Environment" type="Node3D" parent="."]
+script = ExtResource("3_krv6g")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_g4ka7")

@@ -34,6 +34,7 @@ point_count = 3
 
 [node name="ExplodingParticle" type="Node3D"]
 script = ExtResource("1_tvk3i")
+is_coin = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.585793, 0)

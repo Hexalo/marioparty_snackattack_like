@@ -31,6 +31,7 @@ point_count = 2
 
 [node name="ExplodingParticle" type="Node3D"]
 script = ExtResource("1_370mh")
+is_explosion = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525762, 0)

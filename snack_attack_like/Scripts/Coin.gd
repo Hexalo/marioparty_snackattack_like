@@ -42,13 +42,13 @@ func follow_player(delta):
 
 # ---------- SIGNALS ---------- #
 
-func _on_body_entered(body):
-	# Delete The Coin and Add Score
-	if body.is_in_group("Player"):
-		GameManager.add_score()
-		AudioManager.coin_sfx.play()
-		
-		queue_free()
+#func _on_body_entered(body):
+	## Delete The Coin and Add Score
+	#if body.is_in_group("Player"):
+		#GameManager.add_score()
+		#AudioManager.play_coin_sfx()
+		#
+		#queue_free()
 
 func _on_range_body_entered(body):
 	if body.is_in_group("Player"):
