@@ -55,13 +55,6 @@ func _physics_process(delta):
 	if is_grounded:
 		can_double_jump = true
 	
-	#if Input.is_action_just_pressed("jump"):
-		#if is_on_floor():
-			#perform_jump()
-		#elif can_double_jump:
-			#if is_moving():
-				#perform_flip_jump()
-	
 	velocity.y -= gravity * delta
 
 func perform_jump():

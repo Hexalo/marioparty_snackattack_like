@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3xa28vcekytb"]
+
+[ext_resource type="Script" uid="uid://cqmuto8tdeekl" path="res://Scripts/GameUI.gd" id="1_hukmd"]
+[ext_resource type="FontFile" uid="uid://c1gs066s21wdi" path="res://Assets/Ui/Unifontexmono-2vrqo.ttf" id="3_6wd7v"]
+[ext_resource type="FontFile" uid="uid://o4btb7ie62pi" path="res://Assets/Ui/PixelifySans-VariableFont_wght.ttf" id="4_6wd7v"]
+
+[sub_resource type="SystemFont" id="SystemFont_1ixsq"]
+font_names = PackedStringArray("Star Choco")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_igq7x"]
+font = ExtResource("3_6wd7v")
+font_size = 115
+font_color = Color(0.996094, 0.691406, 0.261719, 1)
+outline_color = Color(1, 0.67451, 0.345098, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_hukmd"]
+font_names = PackedStringArray("Star Choco")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_oq4j3"]
+font = SubResource("SystemFont_hukmd")
+font_size = 50
+font_color = Color(1, 0.188492, 0.25368, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2kyd3"]
+line_spacing = 3.31
+font = ExtResource("4_6wd7v")
+font_size = 42
+font_color = Color(0.976471, 0.690196, 0.262745, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_3bj3t"]
+base_font = ExtResource("4_6wd7v")
+variation_embolden = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_3bj3t"]
+font = SubResource("FontVariation_3bj3t")
+font_size = 65
+font_color = Color(0.852533, 0.851338, 0.829365, 1)
+outline_color = Color(1, 0.67451, 0.345098, 1)
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hukmd")
+
+[node name="Playing" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CoinsLabel" type="Label" parent="Playing"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 135.0
+offset_right = 224.0
+offset_bottom = 268.0
+theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
+theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_1ixsq")
+theme_override_font_sizes/font_size = 48
+text = "3"
+label_settings = SubResource("LabelSettings_igq7x")
+
+[node name="LivesLabel" type="Label" parent="Playing"]
+visible = false
+layout_mode = 0
+offset_left = 74.0
+offset_top = 146.0
+offset_right = 147.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
+theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_1ixsq")
+theme_override_font_sizes/font_size = 48
+text = "X 3"
+label_settings = SubResource("LabelSettings_oq4j3")
+
+[node name="LivesTexture" type="TextureRect" parent="Playing"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 28.0
+offset_right = 1136.0
+offset_bottom = 391.0
+scale = Vector2(0.159399, 0.159399)
+
+[node name="GearsLabel" type="Label" parent="Playing"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 95.0
+offset_right = 207.0
+offset_bottom = 163.0
+text = "gears:"
+label_settings = SubResource("LabelSettings_2kyd3")
+
+[node name="GearsIconLabel" type="Label" parent="Playing"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 58.0
+offset_right = 66.0
+offset_bottom = 178.0
+text = "⸫"
+label_settings = SubResource("LabelSettings_igq7x")
+
+[node name="Paused" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="PauseLabel" type="Label" parent="Paused"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 212.0
+offset_bottom = 189.0
+scale = Vector2(0.950668, 0.950668)
+text = "|| 
+Paused"
+label_settings = SubResource("LabelSettings_3bj3t")
+horizontal_alignment = 1

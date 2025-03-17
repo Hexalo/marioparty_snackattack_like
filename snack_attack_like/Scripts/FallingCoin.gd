@@ -1,6 +1,5 @@
 extends RigidBody3D
 
-@onready var spotshadow3d = $SpotShadow3D
 @onready var coin = $Coin
 @onready var _current_scene = get_tree().current_scene
 

@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=3 uid="uid://bv7ajq75wrn80"]
+
+[ext_resource type="Script" uid="uid://y1eanf0l0ne6" path="res://Scripts/SceneManager.gd" id="1_yueht"]
+[ext_resource type="Shader" uid="uid://c5vlbxvoawfd4" path="res://Assets/Shaders/diamond_transition.gdshader" id="2_ebsso"]
+[ext_resource type="FontFile" uid="uid://o4btb7ie62pi" path="res://Assets/Ui/PixelifySans-VariableFont_wght.ttf" id="3_hjya1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjya1"]
+shader = ExtResource("2_ebsso")
+shader_parameter/AspectRatio = 1.5
+shader_parameter/Diamonds = 18.14
+shader_parameter/pixel_size = 0.26
+shader_parameter/height = -1.2
+shader_parameter/disable_pixel = false
+
+[sub_resource type="Animation" id="Animation_ebsso"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.26]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1478)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hjya1"]
+resource_name = "diamond_transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [-1.2, 0.66]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.63902, 1),
+"update": 0,
+"values": [0.08, 0.45]
+}
+
+[sub_resource type="Animation" id="Animation_7xrkh"]
+resource_name = "gameover-label_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(0.287175, 5.27803),
+"update": 0,
+"values": [Vector2(0, 1470), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [-1.2, 0.66]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/pixel_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.63902, 1),
+"update": 0,
+"values": [0.08, 0.45]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.54),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xrkh"]
+_data = {
+&"RESET": SubResource("Animation_ebsso"),
+&"diamond_transition": SubResource("Animation_hjya1"),
+&"gameover_transition": SubResource("Animation_7xrkh")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebsso"]
+font = ExtResource("3_hjya1")
+font_size = 396
+font_color = Color(0.719287, 0.289901, 0.235407, 1)
+outline_size = 40
+outline_color = Color(0.992785, 0.79428, 0.758934, 1)
+shadow_size = 61
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0.08, 7.95)
+
+[node name="SceneManager" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_yueht")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.868206, 2.5028e-06, 0.53985, 1)
+self_modulate = Color(0.972197, 0, 0.432805, 1)
+material = SubResource("ShaderMaterial_hjya1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7xrkh")
+}
+
+[node name="GameOverLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "GameOver"
+label_settings = SubResource("LabelSettings_ebsso")
+horizontal_alignment = 1
+vertical_alignment = 1

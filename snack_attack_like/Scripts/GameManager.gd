@@ -5,13 +5,16 @@ extends Node3D
 @onready var damage_particle = preload("res://Scenes/damageParticle.tscn")
 @onready var celebration_particle = preload("res://Scenes/celebrationParticle.tscn")
 
+var menu_scene = preload("res://Scenes/MenuUi.tscn")
+
 var _current_scene
 var player
 
 var const_wait_time = 2
 var reached_highscore = false
+var default_life = 3
 
-var score
+var score = 0
 var life
 var wait_time
 
@@ -23,12 +26,9 @@ func _ready() -> void:
 func _process(_delta):
 	show_mouse_cursor()
 	
-	if life <= 0:
-		game_over()
-	
 func set_game_var():
 	score = 0
-	life = 3 
+	life = default_life 
 	wait_time = const_wait_time	
 	reached_highscore = false
 	
@@ -38,13 +38,15 @@ func show_mouse_cursor():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func game_over():
+	while(GameManager.get_life() > 0) :
+		GameManager.dec_life()
+	
 	if (score > GameSaver.get_highscore()) :
 		GameSaver.set_highscore(score)
 		
 	AudioManager.game_over.play()
-	get_tree().reload_current_scene()
-	set_game_var()
-		
+	SceneManager.set_current_scene(SceneManager.Scene.MENU_GAMEOVER_SCENE)
+	
 func calculate_wait_time():
 	if wait_time >= 0.5 :
 		wait_time = const_wait_time - ((log(score + 1) / log(12)) + 
@@ -69,3 +71,14 @@ func dec_life():
 	Utils.emit_particle(damage_particle, 
 						player.global_position, _current_scene)
 	player.play_shake_animation()
+	
+	if life <= 0:
+		game_over()
+	
+func get_score() -> int :
+	return score
+
+func get_life() -> int :
+	return life
+	
+	

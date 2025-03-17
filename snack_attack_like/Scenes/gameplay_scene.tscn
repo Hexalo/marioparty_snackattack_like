@@ -1,17 +1,16 @@
-[gd_scene load_steps=284 format=4 uid="uid://iqn2gbb7kinn"]
+[gd_scene load_steps=279 format=4 uid="uid://iqn2gbb7kinn"]
 
 [ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/Player.tscn" id="1_gjetq"]
 [ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_phum0"]
 [ext_resource type="Texture2D" uid="uid://djg0s5eittoip" path="res://Assets/Textures/metro_noord_4k.exr" id="3_jii0m"]
-[ext_resource type="Script" uid="uid://djcc150q1u2cv" path="res://Scenes/HueEngine.gd" id="3_krv6g"]
+[ext_resource type="Script" uid="uid://djcc150q1u2cv" path="res://Scripts/HueEngine.gd" id="3_krv6g"]
 [ext_resource type="Script" uid="uid://bkmcokyrxnk7b" path="res://Scripts/GameManager.gd" id="6_o67kc"]
 [ext_resource type="Script" uid="uid://b2xd7oedl7x68" path="res://Scripts/ObjectSpawner.gd" id="7_5j8o2"]
 [ext_resource type="Script" uid="uid://qm5jujd3qe5o" path="res://Scripts/DeadZone.gd" id="7_aim32"]
 [ext_resource type="PackedScene" uid="uid://b1h0p2no6kcgm" path="res://Scenes/RollingMeteorite.tscn" id="8_fkuk2"]
 [ext_resource type="PackedScene" uid="uid://dj3avtdt4vnap" path="res://Scenes/ExplodingMeteorite.tscn" id="8_gye3u"]
-[ext_resource type="Script" uid="uid://cqmuto8tdeekl" path="res://Scripts/GameUI.gd" id="8_qpmah"]
-[ext_resource type="Texture2D" uid="uid://cnbbny7qjh2xn" path="res://Assets/Textures/coin.png" id="9_l1uhc"]
 [ext_resource type="PackedScene" uid="uid://ctjejh7i0sacy" path="res://Scenes/FallingCoin.tscn" id="10_6a622"]
+[ext_resource type="PackedScene" uid="uid://b3xa28vcekytb" path="res://Scenes/GameUi.tscn" id="11_u0hpe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bjw7q"]
 margin = 0.0
@@ -4538,23 +4537,6 @@ point_count = 15
 [sub_resource type="ViewportTexture" id="ViewportTexture_x3sa7"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[sub_resource type="SystemFont" id="SystemFont_1ixsq"]
-font_names = PackedStringArray("Star Choco")
-multichannel_signed_distance_field = true
-
-[sub_resource type="SystemFont" id="SystemFont_656xb"]
-font_names = PackedStringArray("Star Choco")
-
-[sub_resource type="LabelSettings" id="LabelSettings_igq7x"]
-font = SubResource("SystemFont_656xb")
-font_size = 50
-font_color = Color(0.996094, 0.691406, 0.261719, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_oq4j3"]
-font = SubResource("SystemFont_656xb")
-font_size = 50
-font_color = Color(1, 0.188492, 0.25368, 1)
-
 [node name="GameplayScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_gjetq")]
@@ -5367,52 +5349,7 @@ scaling_3d_scale = 0.3
 
 [node name="UserInterface" type="CanvasLayer" parent="Sprite3D/SubViewport"]
 
-[node name="GameUI" type="Control" parent="Sprite3D/SubViewport/UserInterface"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_qpmah")
-
-[node name="CoinTexture" type="TextureRect" parent="Sprite3D/SubViewport/UserInterface/GameUI"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 31.0
-offset_right = 122.0
-offset_bottom = 121.0
-texture = ExtResource("9_l1uhc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="CoinsLabel" type="Label" parent="Sprite3D/SubViewport/UserInterface/GameUI"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 50.0
-offset_right = 209.0
-offset_bottom = 120.0
-theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
-theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = SubResource("SystemFont_1ixsq")
-theme_override_font_sizes/font_size = 48
-text = "X 3"
-label_settings = SubResource("LabelSettings_igq7x")
-
-[node name="LivesLabel" type="Label" parent="Sprite3D/SubViewport/UserInterface/GameUI"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 146.0
-offset_right = 147.0
-offset_bottom = 216.0
-theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
-theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = SubResource("SystemFont_1ixsq")
-theme_override_font_sizes/font_size = 48
-text = "X 3"
-label_settings = SubResource("LabelSettings_oq4j3")
+[node name="GameUI" parent="Sprite3D/SubViewport/UserInterface" instance=ExtResource("11_u0hpe")]
 
 [connection signal="body_entered" from="DeadZone" to="DeadZone" method="_on_body_entered"]
 [connection signal="timeout" from="ObjectSpawner/SpawnTimer" to="ObjectSpawner" method="_on_object_timer_timeout"]
