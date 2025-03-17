@@ -33,6 +33,15 @@ func load_game() :
 			
 			settings[node_data.keys()[0]] = node_data.values()[0]
 
+func reset_all() :
+	settings = {
+	"highscore" : 0, 
+	"music_on" : true, 
+	"sound_on" : true
+	}
+	
+	save_game()
+
 func get_highscore() -> int : 
 	var highscore = settings["highscore"]
 	return highscore
@@ -49,7 +58,7 @@ func get_music() :
 	return settings["music_on"]
 
 func set_sound(on_off : bool) :
-	settings["set_sound_on"] = on_off
+	settings["sound_on"] = on_off
 	save_game()
 
 func get_sound() :

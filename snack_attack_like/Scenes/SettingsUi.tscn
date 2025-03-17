@@ -1,0 +1,186 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqjmxspm44yfb"]
+
+[ext_resource type="Texture2D" uid="uid://wnt2vokywbiy" path="res://Assets/Ui/settings_background.jpg" id="1_et2lv"]
+[ext_resource type="Script" uid="uid://bdf0k3xo3tlri" path="res://Scripts/settings_ui.gd" id="1_ohm1c"]
+[ext_resource type="Texture2D" uid="uid://ceygfplq6slvg" path="res://Assets/Ui/settings_title.png" id="2_n38qu"]
+[ext_resource type="Texture2D" uid="uid://32nbfvev5ycw" path="res://Assets/Ui/back_btn_normal.png" id="3_ou2jw"]
+[ext_resource type="Texture2D" uid="uid://4peul66ox1gm" path="res://Assets/Ui/back_btn_pressed.png" id="4_yl5my"]
+[ext_resource type="Texture2D" uid="uid://dp3y772ige8i8" path="res://Assets/Ui/back_btn_hovered.png" id="5_cd448"]
+[ext_resource type="Texture2D" uid="uid://cjwymv5gjwbwo" path="res://Assets/Ui/generic_btn_normal.png" id="6_tn4gm"]
+[ext_resource type="Texture2D" uid="uid://c6byupqf6gd7d" path="res://Assets/Ui/generic_btn_pressed.png" id="7_w7ig5"]
+[ext_resource type="Texture2D" uid="uid://b0n3d7cccdo8g" path="res://Assets/Ui/generic_btn_hovered.png" id="8_6hfro"]
+[ext_resource type="FontFile" uid="uid://o4btb7ie62pi" path="res://Assets/Ui/PixelifySans-VariableFont_wght.ttf" id="9_6hfro"]
+[ext_resource type="FontFile" uid="uid://c1gs066s21wdi" path="res://Assets/Ui/Unifontexmono-2vrqo.ttf" id="10_ohm1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hyffy"]
+font = ExtResource("9_6hfro")
+font_size = 276
+
+[sub_resource type="LabelSettings" id="LabelSettings_7li2u"]
+font = ExtResource("10_ohm1c")
+font_size = 416
+
+[node name="SettingsUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohm1c")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_et2lv")
+
+[node name="TitleTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -644.0
+offset_top = 131.0
+offset_right = 636.0
+offset_bottom = 409.0
+grow_horizontal = 2
+texture = ExtResource("2_n38qu")
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -419.0
+offset_right = 275.0
+offset_bottom = 241.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.454932, 0.454932)
+texture_normal = ExtResource("3_ou2jw")
+texture_pressed = ExtResource("4_yl5my")
+texture_hover = ExtResource("5_cd448")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -984.0
+offset_top = -269.0
+offset_right = 985.0
+offset_bottom = 1719.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.431208, 0.431208)
+pivot_offset = Vector2(984.5, 0)
+
+[node name="SoundButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_tn4gm")
+texture_pressed = ExtResource("7_w7ig5")
+texture_hover = ExtResource("8_6hfro")
+
+[node name="TextLabel" type="Label" parent="VBoxContainer/SoundButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 490.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "sound: on"
+label_settings = SubResource("LabelSettings_hyffy")
+vertical_alignment = 1
+
+[node name="IconLabel" type="Label" parent="VBoxContainer/SoundButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -204.0
+offset_right = 469.0
+offset_bottom = 233.0
+grow_vertical = 2
+text = " ☀"
+label_settings = SubResource("LabelSettings_7li2u")
+
+[node name="MusicButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_tn4gm")
+texture_pressed = ExtResource("7_w7ig5")
+texture_hover = ExtResource("8_6hfro")
+
+[node name="TextLabel" type="Label" parent="VBoxContainer/MusicButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 490.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "music: on"
+label_settings = SubResource("LabelSettings_hyffy")
+vertical_alignment = 1
+
+[node name="IconLabel" type="Label" parent="VBoxContainer/MusicButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0570424
+offset_top = -219.432
+offset_right = 469.057
+offset_bottom = 217.568
+grow_vertical = 2
+text = " ♫"
+label_settings = SubResource("LabelSettings_7li2u")
+
+[node name="ResetButton" type="TextureButton" parent="VBoxContainer"]
+modulate = Color(1, 0.347335, 0.323302, 1)
+layout_mode = 2
+texture_normal = ExtResource("6_tn4gm")
+texture_pressed = ExtResource("7_w7ig5")
+texture_hover = ExtResource("8_6hfro")
+
+[node name="TextLabel" type="Label" parent="VBoxContainer/ResetButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 490.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "reset"
+label_settings = SubResource("LabelSettings_hyffy")
+vertical_alignment = 1
+
+[node name="IconLabel" type="Label" parent="VBoxContainer/ResetButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0570424
+offset_top = -208.585
+offset_right = 469.057
+offset_bottom = 228.415
+grow_vertical = 2
+text = " ☠"
+label_settings = SubResource("LabelSettings_7li2u")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

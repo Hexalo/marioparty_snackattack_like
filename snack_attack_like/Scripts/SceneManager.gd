@@ -4,6 +4,7 @@ extends Node
 
 var gameplay_scene = preload("res://Scenes/gameplay_scene.tscn")
 var menu_scene = preload("res://Scenes/MenuUi.tscn")
+var settings_scene = preload("res://Scenes/SettingsUi.tscn")
 
 enum Scene
 {
@@ -26,6 +27,8 @@ func set_current_scene(SCENE : Scene) -> void :
 			change_scene(menu_scene, "diamond_transition")
 		Scene.GAMEPLAY_SCENE :
 			change_scene(gameplay_scene, "diamond_transition")
+		Scene.SETTINGS_SCENE :
+			change_scene(settings_scene, "diamond_transition")
 		Scene.MENU_GAMEOVER_SCENE :
 			change_scene(menu_scene, "gameover_transition")	
 			get_tree().paused = false

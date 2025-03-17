@@ -4219,6 +4219,7 @@ scale_amount_curve = SubResource("Curve_ooin1")
 stream = ExtResource("7_asqdb")
 pitch_scale = 0.75
 autoplay = true
+bus = &"Sfx"
 
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(0.569436, 0, 0, 0, 0.223153, 0, 0, 0, 0.589642, 0, 0.0333793, 0)

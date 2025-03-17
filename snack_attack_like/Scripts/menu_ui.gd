@@ -10,3 +10,7 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	GameManager.set_game_var()
 	SceneManager.set_current_scene(SceneManager.Scene.GAMEPLAY_SCENE)
+
+func _on_setting_button_pressed() -> void:
+	SceneManager.set_current_scene(SceneManager.Scene.SETTINGS_SCENE)
+	
