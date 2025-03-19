@@ -25,13 +25,16 @@ func set_current_scene(SCENE : Scene) -> void :
 	match SCENE : 
 		Scene.MENU_SCENE :
 			change_scene(menu_scene, "diamond_transition")
+			AudioManager.play_intro_music()
 		Scene.GAMEPLAY_SCENE :
 			change_scene(gameplay_scene, "diamond_transition")
+			AudioManager.play_gameplay_music()
 		Scene.SETTINGS_SCENE :
 			change_scene(settings_scene, "diamond_transition")
 		Scene.MENU_GAMEOVER_SCENE :
 			change_scene(menu_scene, "gameover_transition")	
 			get_tree().paused = false
+			AudioManager.play_intro_music()
 
 func _input(event):
 	if (event.is_action_pressed("pause") 
