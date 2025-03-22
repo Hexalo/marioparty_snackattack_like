@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm1hqybgiajgu"]
+[gd_scene load_steps=19 format=3 uid="uid://bm1hqybgiajgu"]
 
 [ext_resource type="Script" uid="uid://c31t8bbe8fnyc" path="res://Scripts/AudioManager.gd" id="1_iwfhn"]
 [ext_resource type="AudioStream" uid="uid://lnq3qyt6mylm" path="res://Assets/Audio/SFX/jump.ogg" id="1_rkf2p"]
@@ -12,6 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://bpoddx6h46nvh" path="res://Assets/Musics/track_1_intro.wav" id="10_us8kf"]
 [ext_resource type="AudioStream" uid="uid://ct1encpbx6twj" path="res://Assets/Musics/track_1_a.wav" id="11_h1w61"]
 [ext_resource type="AudioStream" uid="uid://eir57ugxbnuq" path="res://Assets/Musics/track_1_b.wav" id="12_y62ln"]
+[ext_resource type="AudioStream" uid="uid://cpld6td318g7k" path="res://Assets/Audio/floor_impact.wav" id="13_h1w61"]
+[ext_resource type="AudioStream" uid="uid://dc4cggfdgam7t" path="res://Assets/Audio/coin_bounce.wav" id="14_y62ln"]
+[ext_resource type="AudioStream" uid="uid://c4svrh2uyq6g2" path="res://Assets/Audio/clic.wav" id="15_xl4i1"]
+[ext_resource type="AudioStream" uid="uid://b67hm5qdw6pkc" path="res://Assets/Audio/play.wav" id="16_ohn7x"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u4etc"]
 
@@ -84,11 +88,12 @@ bus = &"Sfx"
 
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_kcgc6")
+volume_db = 8.112
 bus = &"Sfx"
 
 [node name="RobotDamage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_4rpru")
-volume_db = -11.409
+volume_db = -5.92
 bus = &"Sfx"
 
 [node name="Celebration" type="AudioStreamPlayer" parent="."]
@@ -106,3 +111,23 @@ stream = SubResource("AudioStreamInteractive_xl4i1")
 autoplay = true
 bus = &"Musics"
 playback_type = 1
+
+[node name="EnemyImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_h1w61")
+volume_db = 7.377
+bus = &"Sfx"
+
+[node name="CoinBounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_y62ln")
+volume_db = -10.893
+bus = &"Sfx"
+
+[node name="BtnClic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_xl4i1")
+volume_db = 3.467
+bus = &"Sfx"
+
+[node name="BtnPlay" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ohn7x")
+volume_db = 3.467
+bus = &"Sfx"

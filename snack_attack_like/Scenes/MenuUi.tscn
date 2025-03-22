@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b114b6wtf3320"]
+[gd_scene load_steps=22 format=3 uid="uid://b114b6wtf3320"]
 
 [ext_resource type="Texture2D" uid="uid://mk4hd1chb5ib" path="res://Assets/Resources/IMG_4495.PNG" id="1_f1v4l"]
 [ext_resource type="Script" uid="uid://cj4p5xp7o4ipw" path="res://Scripts/menu_ui.gd" id="1_seknk"]
@@ -12,6 +12,68 @@
 [ext_resource type="Texture2D" uid="uid://cxghov6hqyqye" path="res://Assets/Ui/menu_title.png" id="8_001ub"]
 [ext_resource type="FontFile" uid="uid://c1gs066s21wdi" path="res://Assets/Ui/Unifontexmono-2vrqo.ttf" id="12_2oxgs"]
 [ext_resource type="FontFile" uid="uid://o4btb7ie62pi" path="res://Assets/Ui/PixelifySans-VariableFont_wght.ttf" id="12_n20v2"]
+
+[sub_resource type="Animation" id="Animation_n20v2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBackground:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-49, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBackground:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2oxgs"]
+resource_name = "background"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBackground:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.33333, 2.73333, 4.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-49, 2.94), Vector2(-57.474, -10), Vector2(-66, -32.26), Vector2(-13, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBackground:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.98, 4.56),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0, 0.0122173]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10shu"]
+_data = {
+&"RESET": SubResource("Animation_n20v2"),
+&"background": SubResource("Animation_2oxgs")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_seknk"]
 font = ExtResource("12_2oxgs")
@@ -64,13 +126,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_seknk")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_10shu")
+}
+autoplay = "background"
+next/background = &"background"
+blend_times = [&"background", &"background", 0.1]
+
 [node name="MenuBackground" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -45.0
+offset_right = -49.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.05591, 1.05591)
+pivot_offset = Vector2(1267.86, 762.933)
 texture = ExtResource("1_f1v4l")
 stretch_mode = 6
 

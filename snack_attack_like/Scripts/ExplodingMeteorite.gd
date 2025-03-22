@@ -20,6 +20,7 @@ func _on_body_entered(body: Node) -> void:
 	
 	if body.is_in_group("Ground") :
 		apply_impulse(Vector3(0,3,0))
+		AudioManager.enemy_impact.play()
 		max_bounce -= 1
 		
 	if body.is_in_group("Player") :

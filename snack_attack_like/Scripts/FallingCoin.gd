@@ -23,6 +23,7 @@ func _on_body_entered(body: Node) -> void:
 		var z_force = randi_range(-2,2);
 	
 		apply_impulse(Vector3(x_force,3,z_force))
+		AudioManager.play_bounce_coin()
 		max_bounce -= 1
 		
 func _on_coin_body_entered(body: Node3D) -> void:
