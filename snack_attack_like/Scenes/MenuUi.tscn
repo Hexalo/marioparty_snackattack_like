@@ -148,6 +148,7 @@ grow_vertical = 2
 scale = Vector2(1.05591, 1.05591)
 pivot_offset = Vector2(1267.86, 762.933)
 texture = ExtResource("1_f1v4l")
+expand_mode = 2
 stretch_mode = 6
 
 [node name="MenuTitle" type="TextureRect" parent="."]
@@ -173,7 +174,6 @@ offset_top = -278.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_l0cbg")
-expand_mode = 2
 stretch_mode = 6
 
 [node name="PlayButton" type="TextureButton" parent="."]
