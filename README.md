@@ -12,4 +12,5 @@ A little game project made on godot and inspired by a MarioParty minigame name :
 ![Capture d’écran 2025-04-22 à 16 59 10](https://github.com/user-attachments/assets/0ced16dc-b2a2-4b1b-9d57-7a45b0910951)
 
 ## Vidéo explicative en français :
-![video](https://www.youtube.com/watch?v=oT3So-X7PvA)
+[![video](https://github.com/user-attachments/assets/d79b6152-ccb1-42fc-a4aa-1e3a53c7495c)]
+(https://www.youtube.com/watch?v=oT3So-X7PvA)
